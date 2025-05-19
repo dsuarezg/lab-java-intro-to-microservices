@@ -16,6 +16,15 @@ public class CatalogController {
     @Autowired
     private CatalogService catalogService;
 
+    /**
+     * Handles GET requests for retrieving a catalog by course code.
+     *
+     * Returns the catalog associated with the specified course code if found, or a 404 Not Found response if not.
+     * Responds with 502 Bad Gateway in case of processing errors.
+     *
+     * @param courseCode the course code used to look up the catalog
+     * @return HTTP 200 with the catalog if found, 404 if not found, or 502 on error
+     */
     @GetMapping("/{courseCode}")
     public ResponseEntity<?> getCatalog(@PathVariable Long courseCode) {
         try {
